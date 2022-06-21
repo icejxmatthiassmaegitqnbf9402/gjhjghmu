@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: thar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: thar
+  template:
+    metadata:
+      labels:
+        app: thar
+    spec:
+      containers:
+      - image: okteto.dev/thar:latest
+        name: thar
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: ProxySite
+          value: ""
+        - name: Vless_UUID
+          value: "96c3c803-19d8-4658-84a4-2a7c6ce99594"
+        - name: Vless_Path
+          value: "/500"
+        - name: Vmess_UUID
+          value: "96c3c803-19d8-4658-84a4-2a7c6ce99594"
+        - name: Vmess_Path
+          value: "/600"
+        - name: Share_Path
+          value: "/share233"
